@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KMNV — Bordado industrial sin dramas</title>
+    <meta
+      name="description"
+      content="Bordado industrial rápido, prolijo y sin mínimos imposibles para empresas que venden uniformes, ropa corporativa y merch. Cotiza por WhatsApp."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B5%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --black: #141414;
+        --white: #fefefe;
+        --blue: #1a6ea0;
+        --blue-dark: #124f76;
+        --light-gray: #d9d9d9;
+        --gray: #979797;
+        --font-display: "Big Shoulders Display", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--white);
+        color: var(--black);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.55;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      /* fabric texture overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.5;
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            rgba(20, 20, 20, 0.03) 0px,
+            rgba(20, 20, 20, 0.03) 1px,
+            transparent 1px,
+            transparent 9px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(20, 20, 20, 0.03) 0px,
+            rgba(20, 20, 20, 0.03) 1px,
+            transparent 1px,
+            transparent 9px
+          );
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-display);
+        font-weight: 800;
+        line-height: 0.98;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .eyebrow-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.82rem;
+        color: var(--blue-dark);
+        background: rgba(26, 110, 160, 0.1);
+        border: 1px solid rgba(26, 110, 160, 0.35);
+        padding: 6px 14px 6px 10px;
+        border-radius: 999px;
+      }
+      .eyebrow-tag svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      /* buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 1.02rem;
+        padding: 16px 28px;
+        border-radius: 10px;
+        position: relative;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: var(--white);
+        box-shadow:
+          0 6px 0 var(--blue-dark),
+          0 14px 24px -10px rgba(26, 110, 160, 0.55);
+      }
+      .btn-primary:hover {
+        background: var(--blue-dark);
+        transform: translateY(-3px);
+        box-shadow:
+          0 9px 0 #0c3a58,
+          0 22px 30px -12px rgba(26, 110, 160, 0.6);
+      }
+      .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 0 var(--blue-dark);
+      }
+      .btn-primary .stitch-ring {
+        position: absolute;
+        inset: -7px;
+        border-radius: 14px;
+        border: 2px dashed rgba(26, 110, 160, 0);
+        transition:
+          border-color 0.3s ease,
+          transform 0.3s ease;
+        pointer-events: none;
+      }
+      .btn-primary:hover .stitch-ring {
+        border-color: rgba(26, 110, 160, 0.55);
+        transform: scale(1.03);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid rgba(254, 254, 254, 0.55);
+        padding: 14px 26px;
+      }
+      .btn-ghost:hover {
+        background: rgba(254, 254, 254, 0.1);
+        border-color: var(--white);
+      }
+
+      .btn-small {
+        padding: 11px 20px;
+        font-size: 0.92rem;
+        border-radius: 8px;
+      }
+
+      .btn .needle-ico {
+        width: 18px;
+        height: 18px;
+        transition: transform 0.35s ease;
+      }
+      .btn:hover .needle-ico {
+        transform: rotate(28deg);
+      }
+
+      /* ============ NAV ============ */
+      header.nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(254, 254, 254, 0.88);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 28px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 1.6rem;
+        color: var(--black);
+        letter-spacing: 0.5px;
+        line-height: 1;
+      }
+      .logo-sub {
+        display: block;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.62rem;
+        letter-spacing: 1.5px;
+        color: var(--blue);
+        margin-top: 1px;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        position: relative;
+        padding: 150px 0 130px;
+        overflow: hidden;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-copy .eyebrow-tag {
+        margin-bottom: 22px;
+      }
+      .hero h1 {
+        font-size: clamp(2.5rem, 5.4vw, 4.4rem);
+        color: var(--black);
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .hero p.sub {
+        margin-top: 26px;
+        max-width: 52ch;
+        font-size: 1.16rem;
+        color: rgba(20, 20, 20, 0.78);
+      }
+      .hero-cta-row {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .proof-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 0.92rem;
+        color: var(--black);
+      }
+      .proof-line .avatars {
+        display: flex;
+      }
+      .proof-line .avatars span {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid var(--white);
+        margin-left: -10px;
+        background: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .proof-line .avatars span:first-child {
+        margin-left: 0;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 380px;
+      }
+      .patch-badge {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: var(--black);
+        border: 4px dashed var(--blue);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        padding: 20px;
+        animation: slow-spin 34s linear infinite;
+        box-shadow: 0 30px 60px -20px rgba(20, 20, 20, 0.45);
+      }
+      .patch-badge .inner {
+        animation: slow-spin-reverse 34s linear infinite;
+      }
+      .patch-badge .big-num {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 4.4rem;
+        line-height: 0.9;
+        color: var(--white);
+      }
+      .patch-badge .label {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.86rem;
+        color: var(--light-gray);
+        margin-top: 6px;
+        max-width: 16ch;
+      }
+      @keyframes slow-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes slow-spin-reverse {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      .hero-visual .fabric-scrap {
+        position: absolute;
+        background: var(--white);
+        border: 2px dashed rgba(20, 20, 20, 0.25);
+        box-shadow: 0 20px 40px -18px rgba(20, 20, 20, 0.3);
+      }
+      .scrap-1 {
+        width: 120px;
+        padding: 14px 16px;
+        top: -10px;
+        left: -10px;
+        transform: rotate(-9deg);
+        border-radius: 6px;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--black);
+      }
+      .scrap-1 small {
+        display: block;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.62rem;
+        color: var(--blue-dark);
+        letter-spacing: 0.5px;
+      }
+      .scrap-2 {
+        bottom: 0;
+        right: -18px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        transform: rotate(6deg);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--black);
+      }
+      .scrap-2 .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--blue);
+        flex-shrink: 0;
+      }
+
+      /* diagonal divider */
+      .diagonal {
+        position: relative;
+        height: 0;
+      }
+      .diagonal svg {
+        display: block;
+        width: 100%;
+        height: 70px;
+      }
+      .divider-down {
+        margin-top: -1px;
+      }
+
+      /* ============ PROBLEMA ============ */
+      .section-problem {
+        background: var(--black);
+        color: var(--white);
+        padding: 20px 0 100px;
+        position: relative;
+      }
+      .problem-head {
+        max-width: 640px;
+        margin-bottom: 56px;
+      }
+      .problem-head h2 {
+        font-size: clamp(2rem, 4.4vw, 3.1rem);
+        color: var(--white);
+      }
+      .problem-head p {
+        margin-top: 18px;
+        font-size: 1.08rem;
+        color: rgba(254, 254, 254, 0.65);
+        max-width: 56ch;
+      }
+
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      .pain-card {
+        background: rgba(254, 254, 254, 0.05);
+        border: 1px solid rgba(254, 254, 254, 0.14);
+        border-radius: 12px;
+        padding: 22px 24px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          border-color 0.3s ease;
+      }
+      .pain-card:hover {
+        background: rgba(26, 110, 160, 0.14);
+        border-color: rgba(26, 110, 160, 0.5);
+        transform: translateY(-4px);
+      }
+      .pain-card svg {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        margin-top: 3px;
+        color: var(--blue);
+      }
+      .pain-card p {
+        margin: 0;
+        font-size: 1rem;
+        color: rgba(254, 254, 254, 0.9);
+        font-weight: 500;
+      }
+
+      .problem-close {
+        margin-top: 48px;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+        color: var(--light-gray);
+      }
+
+      /* ============ BENEFICIOS ============ */
+      .section-benefits {
+        background: var(--light-gray);
+        padding: 110px 0 120px;
+        position: relative;
+      }
+      .benefits-head {
+        max-width: 660px;
+        margin-bottom: 64px;
+      }
+      .benefits-head h2 {
+        font-size: clamp(2rem, 4.4vw, 3.1rem);
+        color: var(--black);
+      }
+      .benefits-head p {
+        margin-top: 18px;
+        font-size: 1.08rem;
+        color: rgba(20, 20, 20, 0.68);
+        max-width: 58ch;
+      }
+
+      .patch-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 26px;
+      }
+      .patch-card {
+        background: var(--white);
+        border: 2px dashed rgba(20, 20, 20, 0.28);
+        border-radius: 16px;
+        padding: 30px 24px 26px;
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          border-color 0.35s ease;
+        box-shadow: 0 16px 30px -20px rgba(20, 20, 20, 0.25);
+      }
+      .patch-card:nth-child(1) {
+        transform: rotate(-2.2deg);
+      }
+      .patch-card:nth-child(2) {
+        transform: rotate(1.4deg);
+      }
+      .patch-card:nth-child(3) {
+        transform: rotate(-1.2deg);
+      }
+      .patch-card:nth-child(4) {
+        transform: rotate(2deg);
+      }
+      .patch-card:hover {
+        transform: rotate(0deg) translateY(-8px);
+        border-color: var(--blue);
+        box-shadow: 0 26px 40px -20px rgba(26, 110, 160, 0.35);
+      }
+      .patch-card .num-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--black);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+      .patch-card .num-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+      .patch-card h3 {
+        font-size: 1.3rem;
+        color: var(--black);
+        margin-bottom: 10px;
+        line-height: 1.05;
+      }
+      .patch-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(20, 20, 20, 0.65);
+      }
+
+      /* ============ TESTIMONIOS ============ */
+      .section-testimonials {
+        background: var(--black);
+        padding: 110px 0 100px;
+        position: relative;
+        color: var(--white);
+      }
+      .testi-head {
+        max-width: 600px;
+        margin-bottom: 56px;
+      }
+      .testi-head h2 {
+        font-size: clamp(2rem, 4.4vw, 3rem);
+        color: var(--white);
+      }
+
+      .stat-strip {
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+        margin-bottom: 64px;
+        padding-bottom: 44px;
+        border-bottom: 1px dashed rgba(254, 254, 254, 0.22);
+      }
+      .stat-item .stat-num {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        color: var(--blue);
+        line-height: 1;
+      }
+      .stat-item .stat-label {
+        margin-top: 6px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: rgba(254, 254, 254, 0.6);
+        max-width: 20ch;
+      }
+
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .testi-card {
+        background: rgba(254, 254, 254, 0.05);
+        border: 1px solid rgba(254, 254, 254, 0.16);
+        border-radius: 14px;
+        padding: 28px 24px;
+        position: relative;
+      }
+      .testi-card:nth-child(2) {
+        transform: translateY(-16px);
+      }
+      .testi-card .quote-mark {
+        font-family: var(--font-display);
+        font-size: 3rem;
+        color: var(--blue);
+        line-height: 0.5;
+        display: block;
+        margin-bottom: 14px;
+      }
+      .testi-card p.quote {
+        font-size: 1rem;
+        color: rgba(254, 254, 254, 0.9);
+        margin: 0 0 20px;
+      }
+      .testi-card .who {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .testi-card .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-weight: 800;
+        color: var(--white);
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .testi-card .who strong {
+        display: block;
+        font-size: 0.92rem;
+      }
+      .testi-card .who span {
+        display: block;
+        font-size: 0.78rem;
+        color: rgba(254, 254, 254, 0.55);
+      }
+
+      /* ============ UBICACIÓN ============ */
+      .section-location {
+        background: var(--white);
+        padding: 110px 0 120px;
+        position: relative;
+      }
+      .location-head {
+        max-width: 640px;
+        margin-bottom: 48px;
+      }
+      .location-head h2 {
+        font-size: clamp(2rem, 4.4vw, 3rem);
+        color: var(--black);
+      }
+      .location-head p {
+        margin-top: 18px;
+        font-size: 1.08rem;
+        color: rgba(20, 20, 20, 0.68);
+        max-width: 56ch;
+      }
+
+      .location-panel {
+        position: relative;
+        border-radius: 18px;
+        overflow: visible;
+      }
+      .map-frame {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 2px solid var(--black);
+        filter: grayscale(0.85) contrast(1.05);
+        transition: filter 0.5s ease;
+      }
+      .location-panel:hover .map-frame,
+      .location-panel:focus-within .map-frame {
+        filter: grayscale(0);
+      }
+      .map-frame iframe {
+        width: 100%;
+        height: 420px;
+        border: 0;
+        display: block;
+      }
+
+      .address-card {
+        position: relative;
+        margin-top: -70px;
+        margin-left: 32px;
+        max-width: 380px;
+        background: var(--white);
+        border: 2px solid var(--black);
+        border-radius: 14px;
+        padding: 26px 26px 24px;
+        box-shadow: 0 20px 40px -18px rgba(20, 20, 20, 0.35);
+      }
+      .address-card .pin {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+      .address-card .pin svg {
+        width: 22px;
+        height: 22px;
+        color: var(--white);
+      }
+      .address-card h3 {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+      .address-card p {
+        margin: 0 0 4px;
+        font-size: 0.96rem;
+        color: rgba(20, 20, 20, 0.72);
+      }
+      .address-card .hours {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px dashed rgba(20, 20, 20, 0.25);
+        font-size: 0.88rem;
+        color: var(--gray);
+      }
+      .address-card .btn {
+        margin-top: 18px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ============ FAQ ============ */
+      .section-faq {
+        background: var(--light-gray);
+        padding: 110px 0 110px;
+      }
+      .faq-inner {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 60px;
+      }
+      .faq-head h2 {
+        font-size: clamp(2rem, 4.4vw, 3rem);
+        color: var(--black);
+      }
+      .faq-head p {
+        margin-top: 18px;
+        color: rgba(20, 20, 20, 0.65);
+        max-width: 38ch;
+      }
+
+      .faq-list {
+        border-top: 1px dashed rgba(20, 20, 20, 0.3);
+      }
+      .faq-item {
+        border-bottom: 1px dashed rgba(20, 20, 20, 0.3);
+      }
+      .faq-q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 22px 4px;
+        text-align: left;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--black);
+      }
+      .faq-q .plus {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: 2px solid var(--blue);
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition:
+          transform 0.35s ease,
+          background 0.35s ease;
+      }
+      .faq-q .plus svg {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.35s ease;
+      }
+      .faq-item.open .faq-q .plus {
+        background: var(--blue);
+        color: var(--white);
+        transform: rotate(180deg);
+      }
+      .faq-item.open .faq-q .plus svg {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .faq-a p {
+        padding: 0 4px 24px;
+        margin: 0;
+        color: rgba(20, 20, 20, 0.68);
+        font-size: 0.98rem;
+        max-width: 60ch;
+      }
+
+      /* ============ CTA FINAL ============ */
+      .section-final {
+        background: var(--blue);
+        color: var(--white);
+        padding: 110px 0 120px;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+      }
+      .section-final h2 {
+        font-size: clamp(2.2rem, 5.6vw, 4rem);
+        color: var(--white);
+        max-width: 16ch;
+        margin: 0 auto;
+      }
+      .section-final p {
+        margin: 24px auto 0;
+        max-width: 52ch;
+        font-size: 1.12rem;
+        color: rgba(254, 254, 254, 0.9);
+      }
+      .final-cta-row {
+        margin-top: 42px;
+        display: flex;
+        justify-content: center;
+      }
+      .final-cta-row .btn-primary {
+        background: var(--black);
+        box-shadow:
+          0 6px 0 #000,
+          0 14px 24px -10px rgba(0, 0, 0, 0.5);
+      }
+      .final-cta-row .btn-primary:hover {
+        background: #000;
+      }
+      .final-cta-row .btn-primary .stitch-ring {
+        border-color: rgba(254, 254, 254, 0);
+      }
+      .final-cta-row .btn-primary:hover .stitch-ring {
+        border-color: rgba(254, 254, 254, 0.5);
+      }
+
+      .stitch-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: repeating-linear-gradient(
+          115deg,
+          rgba(254, 254, 254, 0.08) 0 2px,
+          transparent 2px 26px
+        );
+      }
+
+      /* ============ FOOTER ============ */
+      footer {
+        background: var(--black);
+        color: rgba(254, 254, 254, 0.6);
+        padding: 44px 0 34px;
+      }
+      .foot-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        border-top: 1px dashed rgba(254, 254, 254, 0.16);
+        padding-top: 28px;
+      }
+      .foot-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .foot-logo .logo-text {
+        color: var(--white);
+        font-size: 1.3rem;
+      }
+      .foot-links {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+        font-size: 0.86rem;
+      }
+      .foot-links a:hover {
+        color: var(--blue);
+      }
+      .foot-fine {
+        font-size: 0.78rem;
+        margin-top: 18px;
+        color: rgba(254, 254, 254, 0.32);
+      }
+
+      /* ============ SCROLL REVEAL ============ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      /* ============ RESPONSIVE ============ */
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          order: -1;
+          min-height: 280px;
+          margin-bottom: 10px;
+        }
+        .patch-badge {
+          width: 230px;
+          height: 230px;
+        }
+        .patch-badge .big-num {
+          font-size: 3.4rem;
+        }
+        .pain-grid {
+          grid-template-columns: 1fr;
+        }
+        .patch-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .testi-card:nth-child(2) {
+          transform: none;
+        }
+        .faq-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .stat-strip {
+          gap: 40px;
+        }
+        .address-card {
+          margin-left: 0;
+          margin-top: -40px;
+          max-width: calc(100% - 40px);
+          margin-right: 20px;
+          margin-left: 20px;
+        }
+      }
+      @media (max-width: 600px) {
+        .wrap {
+          padding: 0 20px;
+        }
+        .nav-inner {
+          padding: 14px 20px;
+        }
+        .hero {
+          padding: 130px 0 90px;
+        }
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero-cta-row {
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+        }
+        .hero-cta-row .btn {
+          width: 100%;
+        }
+        .patch-row {
+          grid-template-columns: 1fr;
+        }
+        .logo-text {
+          font-size: 1.35rem;
+        }
+        .section-problem,
+        .section-benefits,
+        .section-testimonials,
+        .section-location,
+        .section-faq,
+        .section-final {
+          padding-top: 74px;
+          padding-bottom: 74px;
+        }
+        .scrap-1,
+        .scrap-2 {
+          display: none;
+        }
+        .final-cta-row .btn {
+          width: 100%;
+        }
+        .address-card {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: -30px;
+          max-width: calc(100% - 24px);
+          left: 12px;
+        }
+        .map-frame iframe {
+          height: 320px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol
+          id="ico-needle"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 20 L16 8"></path>
+          <circle cx="18" cy="6" r="2.4"></circle>
+          <path d="M14 14 Q10 10 6 14 T2 18"></path>
+        </symbol>
+        <symbol
+          id="ico-dash"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.4"
+          stroke-linecap="round"
+        >
+          <path d="M2 12 h4 M9 12 h4 M16 12 h4"></path>
+        </symbol>
+        <symbol
+          id="ico-plus"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.6"
+          stroke-linecap="round"
+        >
+          <path d="M12 4 V20 M4 12 H20"></path>
+        </symbol>
+        <symbol
+          id="ico-pin"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path>
+          <circle cx="12" cy="10" r="2.4"></circle>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ======================= NAV ======================= -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="#141414"
+              stroke-width="2.5"
+              stroke-dasharray="4 4"
+            />
+            <path
+              d="M11 25 L25 11"
+              stroke="#1a6ea0"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <circle cx="27" cy="9" r="2.6" fill="#1a6ea0" />
+          </svg>
+          <div>
+            <span class="logo-text">KMNV</span>
+            <span class="logo-sub">BORDADO INDUSTRIAL</span>
+          </div>
+        </div>
+        <a
+          class="btn btn-primary btn-small"
+          href="https://wa.me/56990565235?text=Hola!%20Quiero%20cotizar%20un%20bordado%20para%20mi%20empresa"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="stitch-ring"></span>
+          <svg
+            class="needle-ico"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <use href="#ico-needle" />
+          </svg>
+          Cotiza por WhatsApp
+        </a>
+      </div>
+    </header>
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow-tag">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            >
+              <use href="#ico-dash" />
+            </svg>
+            Bordado industrial para empresas
+          </span>
+          <h1>¿Tu bordadora te dejó esperando <em>otra vez</em>?</h1>
+          <p class="sub">
+            Si vendes uniformes, ropa corporativa o merch para colegios, sabes
+            que un bordado atrasado o mal hecho no es tu error — pero es tu
+            problema. Nosotros lo resolvemos: bordado rápido, prolijo y sin
+            dramas, para que tú siempre cumplas lo que prometiste.
+          </p>
+          <div class="hero-cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/56990565235?text=Hola!%20Quiero%20cotizar%20un%20bordado%20para%20mi%20empresa"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="stitch-ring"></span>
+              <svg
+                class="needle-ico"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <use href="#ico-needle" />
+              </svg>
+              Cotiza por WhatsApp ahora
+            </a>
+            <div class="proof-line">
+              <span class="avatars"
+                ><span>MJ</span><span>TR</span><span>CD</span></span
+              >
+              +180 empresas ya bordan con nosotros
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="patch-badge">
+            <div class="inner">
+              <span class="big-num">180+</span>
+              <span class="label">empresas confían su bordado a nosotros</span>
+            </div>
+          </div>
+          <div class="fabric-scrap scrap-1">3-5<small>DÍAS HÁBILES</small></div>
+          <div class="fabric-scrap scrap-2">
+            <span class="dot"></span>Sin mínimos
+          </div>
+        </div>
+      </div>
+      <div class="diagonal divider-down">
+        <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+          <polygon points="0,0 1200,0 1200,20 0,70" fill="#141414" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ======================= PROBLEMA ======================= -->
+    <section class="section-problem">
+      <div class="wrap">
+        <div class="problem-head reveal">
+          <h2>Sabes exactamente de qué te hablo</h2>
+          <p>
+            Llevas años lidiando con lo mismo, con distintos proveedores y el
+            mismo resultado.
+          </p>
+        </div>
+        <div class="pain-grid">
+          <div class="pain-card reveal">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 8v5"></path>
+              <circle cx="12" cy="16" r="0.5" fill="currentColor"></circle>
+              <circle cx="12" cy="12" r="9"></circle>
+            </svg>
+            <p>
+              Le prometiste el pedido a tu cliente para el viernes y tu
+              bordadora recién "está por partir".
+            </p>
+          </div>
+          <div class="pain-card reveal">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6l9 6 9-6"></path>
+              <rect x="3" y="6" width="18" height="12" rx="1"></rect>
+            </svg>
+            <p>
+              Te llegan las poleras con el logo chueco, deshilachado o de un
+              color que jamás pediste.
+            </p>
+          </div>
+          <div class="pain-card reveal">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+              <path d="M8 12h8"></path>
+            </svg>
+            <p>
+              Te piden un mínimo de 50 unidades, cuando el pedido real de tu
+              cliente es de 12.
+            </p>
+          </div>
+          <div class="pain-card reveal">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4v5h5"></path>
+              <path d="M4.6 15A8 8 0 1 0 6 7L4 9"></path>
+            </svg>
+            <p>
+              Cada vez que cambias de proveedor, tienes que explicar todo desde
+              cero. Otra vez.
+            </p>
+          </div>
+          <div class="pain-card reveal">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <path
+                d="M9 10h.01M15 10h.01M8 16c1.2-1.2 2.8-1.2 4-1.2s2.8 0 4 1.2"
+              ></path>
+            </svg>
+            <p>
+              Terminas pidiendo disculpas tú, por un error que ni siquiera
+              cometiste.
+            </p>
+          </div>
+        </div>
+        <p class="problem-close reveal">
+          Si asentiste con la cabeza en alguno de estos, sigamos hablando.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= BENEFICIOS ======================= -->
+    <section class="section-benefits">
+      <div class="wrap">
+        <div class="benefits-head reveal">
+          <h2>Esto es lo que cambia cuando bordas con nosotros</h2>
+          <p>
+            Nada de promesas vagas. Esto es lo que vas a tener desde tu primer
+            pedido.
+          </p>
+        </div>
+        <div class="patch-row">
+          <div class="patch-card reveal">
+            <div class="num-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 3"></path>
+              </svg>
+            </div>
+            <h3>Entregas a tiempo, siempre</h3>
+            <p>
+              Fechas que se cumplen, no que se negocian. Tú avisas cuándo lo
+              necesitas, nosotros lo cumplimos.
+            </p>
+          </div>
+          <div class="patch-card reveal">
+            <div class="num-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </div>
+            <h3>Bordado perfecto desde el primer intento</h3>
+            <p>
+              Sin logos chuecos ni hilos sueltos. Revisamos cada máquina y cada
+              muestra antes de correr tu pedido.
+            </p>
+          </div>
+          <div class="patch-card reveal">
+            <div class="num-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 12h16M4 6h16M4 18h10"></path>
+              </svg>
+            </div>
+            <h3>Sin mínimos que no te sirven</h3>
+            <p>
+              ¿Necesitas 8 unidades o 800? Ajustamos el pedido a tu negocio, no
+              al revés.
+            </p>
+          </div>
+          <div class="patch-card reveal">
+            <div class="num-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Un solo contacto, sin vueltas</h3>
+            <p>
+              Hablas directo con quien borda, no con un call center. Todo se
+              resuelve por WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= TESTIMONIOS ======================= -->
+    <section class="section-testimonials">
+      <div class="wrap">
+        <div class="testi-head reveal">
+          <h2>
+            No lo decimos nosotros. Lo dicen quienes ya no se preocupan por esto
+          </h2>
+        </div>
+
+        <div class="stat-strip reveal">
+          <div class="stat-item">
+            <div class="stat-num">180+</div>
+            <div class="stat-label">empresas bordan con nosotros cada mes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3-5</div>
+            <div class="stat-label">días hábiles de entrega promedio</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">0</div>
+            <div class="stat-label">mínimos imposibles de cumplir</div>
+          </div>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi-card reveal">
+            <span class="quote-mark">"</span>
+            <p class="quote">
+              Desde que trabajamos con KMNV dejé de estresarme por las entregas.
+              Literal, se me olvidó que esto era un problema.
+            </p>
+            <div class="who">
+              <div class="avatar">MJ</div>
+              <div>
+                <strong>María Jofré</strong><span>Uniformes escolares</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <span class="quote-mark">"</span>
+            <p class="quote">
+              Pedimos 15 chaquetas con logo para un evento a 4 días y llegaron
+              perfectas. Ni yo lo creía.
+            </p>
+            <div class="who">
+              <div class="avatar">TR</div>
+              <div>
+                <strong>Tomás Reyes</strong
+                ><span>Agencia de marketing y merch</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <span class="quote-mark">"</span>
+            <p class="quote">
+              Cambié de bordadora tres veces antes de encontrar esta. Ahora no
+              cambio ni loca.
+            </p>
+            <div class="who">
+              <div class="avatar">CD</div>
+              <div>
+                <strong>Constanza Díaz</strong><span>Ropa corporativa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= UBICACIÓN ======================= -->
+    <section class="section-location">
+      <div class="wrap">
+        <div class="location-head reveal">
+          <h2>¿Prefieres pasar directo al taller?</h2>
+          <p>
+            Estamos en pleno La Cisterna. Ven, revisa las telas y conversemos tu
+            pedido cara a cara.
+          </p>
+        </div>
+        <div class="location-panel reveal">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Jose+Ureta+1148-B,+La+Cisterna,+Santiago,+Chile&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="Ubicación de KMNV en José Ureta 1148-B, La Cisterna"
+            >
+            </iframe>
+          </div>
+          <div class="address-card">
+            <div class="pin">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <use href="#ico-pin" />
+              </svg>
+            </div>
+            <h3>KMNV — Taller de bordado</h3>
+            <p>José Ureta 1148-B</p>
+            <p>La Cisterna, Santiago de Chile</p>
+            <div class="hours">Lunes a viernes, 9:00 a 18:30 hrs</div>
+            <a
+              class="btn btn-primary btn-small"
+              href="https://www.google.com/maps/dir/?api=1&destination=Jose+Ureta+1148-B,+La+Cisterna,+Santiago,+Chile"
+              target="_blank"
+              rel="noopener"
+            >
+              Cómo llegar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FAQ ======================= -->
+    <section class="section-faq">
+      <div class="wrap faq-inner">
+        <div class="faq-head reveal">
+          <h2>Antes de escribirnos, seguro te preguntas esto</h2>
+          <p>Y si no está aquí tu duda, mándanosla directo por WhatsApp.</p>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Cuál es el pedido mínimo?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Ninguno que te complique. Bordamos desde 1 prenda para muestras
+                hasta lotes grandes para tu producción completa.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Cuánto se demoran en entregar?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Entre 3 y 5 días hábiles para pedidos estándar. Si tienes una
+                fecha límite ajustada, dínoslo por WhatsApp y vemos cómo hacerlo
+                calzar.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿En qué tipo de prendas y telas bordan?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Poleras, polerones, chaquetas, delantales, gorros, uniformes
+                escolares y corporativos — en algodón, piqué, softshell y la
+                mayoría de telas industriales.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Y si mi logo no está listo para bordado?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Lo digitalizamos nosotros. Nos mandas tu logo en cualquier
+                formato y te lo dejamos listo para bordar, sin costo extra en tu
+                primer pedido.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Puedo llevar mis prendas directamente al taller?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Claro. Estamos en José Ureta 1148-B, La Cisterna (arriba tienes
+                el mapa). Te recomendamos avisarnos antes por WhatsApp para
+                asegurar que haya alguien recibiendo pedidos.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Hacen despacho a regiones?
+              <span class="plus"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                >
+                  <use href="#ico-plus" /></svg
+              ></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Sí, despachamos a todo Chile. Tú coordinas la fecha, nosotros
+                nos encargamos del resto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CTA FINAL ======================= -->
+    <section class="section-final">
+      <div class="stitch-bg"></div>
+      <div class="wrap reveal" style="position: relative">
+        <h2>
+          La próxima vez que un cliente te pida bordado, ya tienes con quién
+          responder
+        </h2>
+        <p>
+          Cuéntanos qué necesitas bordar y en cuántos días. Te respondemos por
+          WhatsApp con precio y plazo, sin vueltas.
+        </p>
+        <div class="final-cta-row">
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/56990565235?text=Hola!%20Quiero%20cotizar%20un%20bordado%20para%20mi%20empresa"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="stitch-ring"></span>
+            <svg
+              class="needle-ico"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <use href="#ico-needle" />
+            </svg>
+            Cotiza por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer>
+      <div class="wrap">
+        <div class="foot-inner">
+          <div class="foot-logo">
+            <svg
+              class="logo-mark"
+              viewBox="0 0 40 40"
+              fill="none"
+              width="30"
+              height="30"
+            >
+              <circle
+                cx="20"
+                cy="20"
+                r="18"
+                stroke="#fefefe"
+                stroke-width="2.5"
+                stroke-dasharray="4 4"
+              />
+              <path
+                d="M11 25 L25 11"
+                stroke="#1a6ea0"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <circle cx="27" cy="9" r="2.6" fill="#1a6ea0" />
+            </svg>
+            <span class="logo-text">KMNV</span>
+          </div>
+          <ul class="foot-links">
+            <li>
+              <a href="https://wa.me/56990565235" target="_blank" rel="noopener"
+                >WhatsApp</a
+              >
+            </li>
+            <li><a href="#top">Volver arriba</a></li>
+          </ul>
+        </div>
+        <p class="foot-fine">
+          © <span id="year"></span> KMNV — Bordado industrial. José Ureta
+          1148-B, La Cisterna, Santiago de Chile.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        const q = item.querySelector(".faq-q");
+        const a = item.querySelector(".faq-a");
+        q.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item.open").forEach((openItem) => {
+            if (openItem !== item) {
+              openItem.classList.remove("open");
+              openItem
+                .querySelector(".faq-q")
+                .setAttribute("aria-expanded", "false");
+              openItem.querySelector(".faq-a").style.maxHeight = null;
+            }
+          });
+          if (isOpen) {
+            item.classList.remove("open");
+            q.setAttribute("aria-expanded", "false");
+            a.style.maxHeight = null;
+          } else {
+            item.classList.add("open");
+            q.setAttribute("aria-expanded", "true");
+            a.style.maxHeight = a.scrollHeight + "px";
+          }
+        });
+      });
+
+      const revealEls = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      revealEls.forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
